@@ -1,3 +1,4 @@
+import { formatCurrency } from "../helpers";
 import { CartActions } from "../reducers/cart-reducer";
 import type { Product } from "../types";
 
@@ -20,7 +21,7 @@ export default function Guitar({ product, dispatch }: ProductProps) {
       <div className="col-8">
         <h3 className="text-black fs-4 fw-bold text-uppercase">{name}</h3>
         <p>{description}</p>
-        <p className="fw-black text-primary fs-3">${price}</p>
+        <p className="fw-black text-primary fs-4">{formatCurrency(price)}</p>
         <button
           type="button"
           className="btn btn-dark w-100"

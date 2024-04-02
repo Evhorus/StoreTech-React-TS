@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { CartItem } from "../types";
 import { CartActions } from "../reducers/cart-reducer";
+import { formatCurrency } from "../helpers";
 
 type HeaderProps = {
   cart: CartItem[];
@@ -60,7 +61,9 @@ export default function Header({ cart, dispatch }: HeaderProps) {
                               />
                             </td>
                             <td>{item.name}</td>
-                            <td className="fw-bold">${item.price}</td>
+                            <td className="fw-bold">
+                              {formatCurrency(item.price)}
+                            </td>
                             <td className="flex align-items-start gap-4">
                               <button
                                 type="button"
@@ -107,7 +110,10 @@ export default function Header({ cart, dispatch }: HeaderProps) {
                       </tbody>
                     </table>
                     <p className="text-end">
-                      Total pagar: <span className="fw-bold">${cartTotal}</span>
+                      Total pagar:{" "}
+                      <span className="fw-bold">
+                        {formatCurrency(cartTotal)}
+                      </span>
                     </p>
                     <button
                       className="btn btn-dark w-100 mt-3 p-2"
